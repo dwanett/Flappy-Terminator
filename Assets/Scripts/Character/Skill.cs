@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
@@ -10,7 +11,7 @@ public abstract class Skill : MonoBehaviour
     
     private Coroutine _delayAttack;
 
-    private void Awake()
+    private void Start()
     {
         _delayAttack = null;
     }
@@ -19,13 +20,6 @@ public abstract class Skill : MonoBehaviour
     {
         if (DistanceUsing < 0f)
             DistanceUsing = 0f;
-    }
-    
-    public bool IsDistanceReached(Character target)
-    {
-        float distanceTarget = Vector2.Distance(transform.position, target.transform.position);
-
-        return distanceTarget - DistanceUsing < 0.0f;
     }
     
     public virtual bool TryUse()

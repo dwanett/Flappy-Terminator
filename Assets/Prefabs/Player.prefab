@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8775084297989022155}
   - component: {fileID: 9098656692197828765}
   - component: {fileID: 4958391659214356378}
-  - component: {fileID: 6432995277881095914}
+  - component: {fileID: 8066776018233646059}
   - component: {fileID: 1359873053336639352}
   - component: {fileID: 2761286499484894262}
   - component: {fileID: 1675237293474090169}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -40540558, guid: 3c20ecd747ab7174e9199a4774e04766, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e601c63aa8522b44d93caaef4f881261, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxValue>k__BackingField: 100
   <Value>k__BackingField: 100
---- !u!114 &6432995277881095914
+--- !u!114 &8066776018233646059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,15 +114,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8536547299844935699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13e6aded61b48e48247540ec76b3ab7, type: 3}
+  m_Script: {fileID: 11500000, guid: ac90a6fe5b6e453a9b2d2df7d878dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeDelayUsing: 0
-  <Damage>k__BackingField: 20
+  _timeDelayUsing: 3
+  <Damage>k__BackingField: 21
   <LayerMaskAttacked>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
   <DistanceUsing>k__BackingField: 100
+  _prefabBullet: {fileID: 4465700216117856827, guid: 060dbfc82e7eaa1469c587bacf420d0f, type: 3}
 --- !u!114 &1359873053336639352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 4958391659214356378}
-  <Skill>k__BackingField: {fileID: 6432995277881095914}
+  <Skill>k__BackingField: {fileID: 8066776018233646059}
   _gameArea: {fileID: 0}
+  _ground: {fileID: 0}
+  _playerInput: {fileID: 1675237293474090169}
 --- !u!114 &2761286499484894262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ba4f6f602fa0a4296209847cd3544b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceJump: 3
   _speed: 2.5
+  _forceJump: 3
   _maxRotationZ: 35
   _minRotationZ: -60
   _rotationSpeed: 1
@@ -228,6 +231,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17237611, y: -0.5266992}
-  m_Size: {x: 5.438326, y: 2.9677033}
+  m_Offset: {x: -0.09112717, y: -0.032936625}
+  m_Size: {x: 5.9758644, y: 3.1052473}
   m_Direction: 1

@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private Menu _menu;
 
     private void OnEnable()
     {
-        _player.DieEvent += RestartScene;
+        _player.DieEvent += EnabledMenu;
     }
 
     private void OnDisable()
     {
-        _player.DieEvent -= RestartScene;
+        _player.DieEvent -= EnabledMenu;
     }
 
-    private void RestartScene()
+    public void EnabledMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 0f;
+        _menu.gameObject.SetActive(true);
     }
 }

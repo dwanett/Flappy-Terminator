@@ -7,22 +7,13 @@ public abstract class Character : MonoBehaviour
     
     [field: SerializeField] public  Skill Skill {get; private set;}
     
-    public event Action ShootEvent;
     public event Action DieEvent;
     
     protected void ToDie()
     {
-        DieEvent?.Invoke();   
+        DieEvent?.Invoke();
         gameObject.SetActive(false);
-    }
-    
-    protected void CastSkill(Skill skill)
-    {
-        if (skill.TryUse())
-        {
-            if (skill is Shoot)
-                ShootEvent?.Invoke();
-        }
+        Destroy(gameObject);
     }
     
     public void TakeDamage(float damage)

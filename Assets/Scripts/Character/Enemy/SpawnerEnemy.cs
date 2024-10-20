@@ -1,14 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField] private Enemy _prefabEnemy;
-    [SerializeField] private List<PatrollingWayPoint> pointsPatrollingWay;
+    [SerializeField] private float _delayRespawn;
+    [SerializeField] private int _countSpawn;
+    [SerializeField] private List<PatrollingWayPoint> _pointsPatrollingWay;
+    [SerializeField] private List<Transform> _pointsSpawn;
     private bool _canSpawn = true;
 
-    private Enemy _spawnedEnemy;
+    private int _countDie = 0;
     
+    public event Action<int> DieEnemy;
+    
+    private void Awake()
+    {
+        for (int i = 0; i < _countSpawn; i++)
+        {
+            Spawn();
+        }
+    }
+
     private void Update()
     {
         if (_canSpawn)
@@ -19,15 +34,22 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void Spawn()
     {
-        _spawnedEnemy = Instantiate(_prefabEnemy, transform);
-        _spawnedEnemy.ReplacePatrollingWay(pointsPatrollingWay);
+        Enemy spawnedEnemy = Instantiate(_prefabEnemy, _pointsSpawn[new System.Random().Next(_pointsSpawn.Count)]);
+        spawnedEnemy.ReplacePatrollingWay(_pointsPatrollingWay);
         _canSpawn = false;
-        _spawnedEnemy.DieEvent += Despawn;
+        spawnedEnemy.DieEvent += Despawn;
     }
 
     private void Despawn()
     {
-        _spawnedEnemy.DieEvent -= Despawn;
+        _countDie++;
+        DieEnemy?.Invoke(_countDie);  
+        StartCoroutine(DelayRespawn());
+    }
+
+    private IEnumerator DelayRespawn()
+    {
+        yield return new WaitForSeconds(_delayRespawn);
         _canSpawn = !_canSpawn;
     }
 }
