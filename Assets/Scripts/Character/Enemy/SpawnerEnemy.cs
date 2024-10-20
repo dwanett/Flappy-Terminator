@@ -10,9 +10,10 @@ public class SpawnerEnemy : MonoBehaviour
     [SerializeField] private int _countSpawn;
     [SerializeField] private List<PatrollingWayPoint> _pointsPatrollingWay;
     [SerializeField] private List<Transform> _pointsSpawn;
-    private bool _canSpawn = true;
-
+    
+    private int _countActive = 0;
     private int _countDie = 0;
+    private Coroutine _delay = null;
     
     public event Action<int> DieEnemy;
     
@@ -26,9 +27,9 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void Update()
     {
-        if (_canSpawn)
+        if (_countActive < _countSpawn && _delay == null)
         {
-            Spawn();
+            _delay = StartCoroutine(DelayRespawn());
         }
     }
 
@@ -36,20 +37,21 @@ public class SpawnerEnemy : MonoBehaviour
     {
         Enemy spawnedEnemy = Instantiate(_prefabEnemy, _pointsSpawn[new System.Random().Next(_pointsSpawn.Count)]);
         spawnedEnemy.ReplacePatrollingWay(_pointsPatrollingWay);
-        _canSpawn = false;
+        _countActive++;
         spawnedEnemy.DieEvent += Despawn;
     }
 
     private void Despawn()
     {
         _countDie++;
+        _countActive--;
         DieEnemy?.Invoke(_countDie);  
-        StartCoroutine(DelayRespawn());
     }
 
     private IEnumerator DelayRespawn()
     {
         yield return new WaitForSeconds(_delayRespawn);
-        _canSpawn = !_canSpawn;
+        _delay = null;
+        Spawn();
     }
 }
