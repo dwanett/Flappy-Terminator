@@ -36,7 +36,7 @@ public class PlayerMover : CharacterMover
 
     private void Jump()
     {
-        _rigidbody.velocity = new Vector2(_speed, _forceJump);
+        _rigidbody.velocity = new Vector2(Speed, _forceJump);
         transform.rotation = _maxRotation;
     }
 }

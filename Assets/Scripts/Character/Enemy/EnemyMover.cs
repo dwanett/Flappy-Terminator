@@ -18,7 +18,7 @@ public class EnemyMover : CharacterMover
             _currentTargetMovePoint = GetNextPointMove();
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, _currentTargetMovePoint.position, _speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _currentTargetMovePoint.position, Speed * Time.deltaTime);
     }
 
     private Transform GetNextPointMove()
