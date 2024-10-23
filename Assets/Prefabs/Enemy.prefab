@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2464898427438345821}
   - component: {fileID: 1057045445126184742}
+  - component: {fileID: -6691280545137458379}
   - component: {fileID: 6246261524757213709}
   - component: {fileID: 7021768541027561903}
   - component: {fileID: 7539287621897537016}
-  - component: {fileID: 2115890659366300004}
   - component: {fileID: 5447243389594701221}
   - component: {fileID: 1557505678388510022}
   - component: {fileID: 676503707013963103}
@@ -91,6 +91,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6691280545137458379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019726616226727614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69bac599b6f9574d854b308d5895689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxValue>k__BackingField: 100
+  <Value>k__BackingField: 100
 --- !u!114 &6246261524757213709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3329222ba6771eb4a94954be6c0463cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: {fileID: 2115890659366300004}
+  <Health>k__BackingField: {fileID: -6691280545137458379}
   <Skill>k__BackingField: {fileID: 7021768541027561903}
 --- !u!114 &7021768541027561903
 MonoBehaviour:
@@ -138,20 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _enemy: {fileID: 6246261524757213709}
---- !u!114 &2115890659366300004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019726616226727614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69bac599b6f9574d854b308d5895689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxValue>k__BackingField: 100
-  <Value>k__BackingField: 50
 --- !u!70 &5447243389594701221
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

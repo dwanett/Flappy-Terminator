@@ -8,15 +8,15 @@ public class Player : Character
 
     private void OnEnable()
     {
-        _gameArea.playerExitGameArea += ToDie;
-        _ground.playerTouchGround += ToDie;
+        _gameArea.PlayerExitGameArea += ToDie;
+        _ground.PlayerTouchGround += ToDie;
         _playerInput.ShootEvent += UseSkill;
     }
 
     private void OnDisable()
     {
-        _gameArea.playerExitGameArea -= ToDie;
-        _ground.playerTouchGround -= ToDie;
+        _gameArea.PlayerExitGameArea -= ToDie;
+        _ground.PlayerTouchGround -= ToDie;
         _playerInput.ShootEvent -= UseSkill;
     }
 

@@ -7,9 +7,7 @@ public class Vision : MonoBehaviour
     
     private void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, Mathf.Infinity, _layerMaskPlayer);
-        
-        if (hit)
+        if (Physics2D.Raycast(transform.position, Vector2.left, Mathf.Infinity, _layerMaskPlayer))
         {
             _enemy.Skill.TryUse();
         }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8775084297989022155}
   - component: {fileID: 9098656692197828765}
-  - component: {fileID: 4958391659214356378}
+  - component: {fileID: 3778426335441422365}
   - component: {fileID: 8066776018233646059}
   - component: {fileID: 1359873053336639352}
   - component: {fileID: 2761286499484894262}
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4958391659214356378
+--- !u!114 &3778426335441422365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65eea9080e3688f479f1d0805ea2f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: {fileID: 4958391659214356378}
+  <Health>k__BackingField: {fileID: 3778426335441422365}
   <Skill>k__BackingField: {fileID: 8066776018233646059}
   _gameArea: {fileID: 0}
   _ground: {fileID: 0}

@@ -3,55 +3,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerEnemy : MonoBehaviour
+public class SpawnerEnemy : Spawner<Enemy>
 {
-    [SerializeField] private Enemy _prefabEnemy;
     [SerializeField] private float _delayRespawn;
-    [SerializeField] private int _countSpawn;
-    [SerializeField] private List<PatrollingWayPoint> _pointsPatrollingWay;
     [SerializeField] private List<Transform> _pointsSpawn;
     
-    private int _countActive = 0;
+    [field: SerializeField] public List<PatrollingWayPoint> PointsPatrollingWay { get; private set; }
+    
     private int _countDie = 0;
-    private Coroutine _delay = null;
-    
+    private WaitForSeconds _waitForSeconds;
+
     public event Action<int> DieEnemy;
-    
-    private void Awake()
+
+    private void Start()
     {
-        for (int i = 0; i < _countSpawn; i++)
-        {
-            Spawn();
-        }
+        _waitForSeconds = new WaitForSeconds(_delayRespawn);
+        InvokeRepeating(nameof(Spawn), 0, 0.01f);
     }
 
-    private void Update()
+    protected override void ActionOnRelease(Enemy enemy)
     {
-        if (_countActive < _countSpawn && _delay == null)
-        {
-            _delay = StartCoroutine(DelayRespawn());
-        }
+        _countDie++;
+        DieEnemy?.Invoke(_countDie);
+    }
+
+    protected override void ActionOnGet(Enemy enemy)
+    {
+        StartCoroutine(DelayRespawn(enemy));
+    }
+
+    protected override Enemy Instantiate()
+    {
+        Enemy enemy = Instantiate(Prefab, _pointsSpawn[new System.Random().Next(_pointsSpawn.Count)]);
+        enemy.ReplacePatrollingWay(PointsPatrollingWay);
+        enemy.DieEvent += () => Pool.Release(enemy);
+        return enemy;
     }
 
     private void Spawn()
     {
-        Enemy spawnedEnemy = Instantiate(_prefabEnemy, _pointsSpawn[new System.Random().Next(_pointsSpawn.Count)]);
-        spawnedEnemy.ReplacePatrollingWay(_pointsPatrollingWay);
-        _countActive++;
-        spawnedEnemy.DieEvent += Despawn;
+        if (Pool.CountActive < MaxSpawn)
+            Pool.Get();
     }
-
-    private void Despawn()
+    
+    private IEnumerator DelayRespawn(Enemy enemy)
     {
-        _countDie++;
-        _countActive--;
-        DieEnemy?.Invoke(_countDie);  
-    }
-
-    private IEnumerator DelayRespawn()
-    {
-        yield return new WaitForSeconds(_delayRespawn);
-        _delay = null;
-        Spawn();
+        yield return _waitForSeconds;
+        enemy.ToRevive();
     }
 }

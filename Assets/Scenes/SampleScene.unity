@@ -1120,16 +1120,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a55d0f7545941798f4ad28550754046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabEnemy: {fileID: 6246261524757213709, guid: 55c395bd432500b43abe7d92a11f068a, type: 3}
+  Prefab: {fileID: 6246261524757213709, guid: 55c395bd432500b43abe7d92a11f068a, type: 3}
+  MaxSpawn: 3
   _delayRespawn: 3
-  _countSpawn: 3
-  _pointsPatrollingWay:
-  - {fileID: 731903034}
-  - {fileID: 2063393864}
-  - {fileID: 1495994879}
   _pointsSpawn:
   - {fileID: 668913037}
   - {fileID: 111458821}
+  <PointsPatrollingWay>k__BackingField:
+  - {fileID: 731903034}
+  - {fileID: 2063393864}
+  - {fileID: 1495994879}
 --- !u!1 &1801629132
 GameObject:
   m_ObjectHideFlags: 0

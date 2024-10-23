@@ -8,13 +8,13 @@ public class GameArea : MonoBehaviour
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private LayerMask _playerMask;
 
-    public event Action playerExitGameArea;
+    public event Action PlayerExitGameArea;
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if ((_playerMask & (1 << other.gameObject.layer)) != 0)
         {
-            playerExitGameArea?.Invoke();
+            PlayerExitGameArea?.Invoke();
         }
     }
 
