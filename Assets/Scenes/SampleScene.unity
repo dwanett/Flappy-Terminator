@@ -1719,6 +1719,14 @@ PrefabInstance:
       propertyPath: _gameArea
       value: 
       objectReference: {fileID: 1939739452}
+    - target: {fileID: 8066776018233646059, guid: a3167bd093df51846853865d8445e696, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066776018233646059, guid: a3167bd093df51846853865d8445e696, type: 3}
+      propertyPath: _prefabSpawnerBullet
+      value: 
+      objectReference: {fileID: 5664324213743891764, guid: b59185feb4c5e6841a56b4a577666784, type: 3}
     - target: {fileID: 8536547299844935699, guid: a3167bd093df51846853865d8445e696, type: 3}
       propertyPath: m_Name
       value: Player

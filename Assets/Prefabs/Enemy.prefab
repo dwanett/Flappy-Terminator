@@ -137,7 +137,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   <DistanceUsing>k__BackingField: 100
-  _prefabBullet: {fileID: 4465700216117856827, guid: 060dbfc82e7eaa1469c587bacf420d0f, type: 3}
+  _prefabSpawnerBullet: {fileID: 5664324213743891764, guid: b59185feb4c5e6841a56b4a577666784, type: 3}
 --- !u!114 &7539287621897537016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b2b7f8b97c61740af3517c67a5190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  Speed: 3
   _enemy: {fileID: 6246261524757213709}
 --- !u!70 &5447243389594701221
 CapsuleCollider2D:

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,7 +11,8 @@ public class Bullet : MonoBehaviour
     
     private LayerMask _targetMask;
     private float _damage;
-    private Vector2 _direction;
+
+    public event Action<Bullet> Die;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,25 +22,24 @@ public class Bullet : MonoBehaviour
             if (character != null)
             {
                 character.TakeDamage(_damage);
-                Destroy(gameObject);
+                Die?.Invoke(this);
             }
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        _rigidbody2D.velocity = _direction * _speed;
         StartCoroutine(LiveBullet());
     }
 
-    public void ChangeDirection(Vector2 newDirection)
+    public void ChangeDirection(Vector2 direction)
     {
-        _direction = newDirection;
+        _rigidbody2D.velocity = direction * _speed;
     }
     
-    public void ChangeTargetMask(LayerMask newTargetMask)
+    public void ChangeTargetMask(LayerMask targetMask)
     {
-        _targetMask = newTargetMask;
+        _targetMask = targetMask;
     }
     
     public void ChangeDamage(float newDamage)
@@ -49,6 +50,6 @@ public class Bullet : MonoBehaviour
     private IEnumerator LiveBullet()
     {
         yield return new WaitForSeconds(_timeLive);
-        Destroy(gameObject);
+        Die?.Invoke(this);
     }
 }

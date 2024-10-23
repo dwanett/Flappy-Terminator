@@ -2,7 +2,13 @@
 
 public class Shoot : Skill
 {
-    [SerializeField] private Bullet _prefabBullet;
+    [SerializeField] private SpawnerBullet _prefabSpawnerBullet;
+    private SpawnerBullet _spawner;
+
+    private void Start()
+    {
+        _spawner = Instantiate(_prefabSpawnerBullet);
+    }
     
     public override bool TryUse()
     {
@@ -11,10 +17,7 @@ public class Shoot : Skill
         if (isUsing)
         {
             Vector2 directionView = transform.localScale.x < 0f ? Vector2.left : Vector2.right;
-            Bullet bullet = Instantiate(_prefabBullet, transform.position, Quaternion.identity);
-            bullet.ChangeDirection(directionView);
-            bullet.ChangeTargetMask(LayerMaskAttacked);
-            bullet.ChangeDamage(Damage);
+            _spawner.Spawn(directionView, transform.position, LayerMaskAttacked, Damage);
         }
         
         return isUsing;

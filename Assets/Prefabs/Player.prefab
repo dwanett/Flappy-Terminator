@@ -123,7 +123,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   <DistanceUsing>k__BackingField: 100
-  _prefabBullet: {fileID: 4465700216117856827, guid: 060dbfc82e7eaa1469c587bacf420d0f, type: 3}
+  _prefabSpawnerBullet: {fileID: 5664324213743891764, guid: b59185feb4c5e6841a56b4a577666784, type: 3}
 --- !u!114 &1359873053336639352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ba4f6f602fa0a4296209847cd3544b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2.5
+  Speed: 3
   _forceJump: 3
   _maxRotationZ: 35
   _minRotationZ: -60
