@@ -16,7 +16,7 @@ public class Shoot : Skill
 
         if (isUsing)
         {
-            Vector2 directionView = transform.localScale.x < 0f ? Vector2.left : Vector2.right;
+            Vector2 directionView = transform.localScale.x < 0f ? transform.right * -1: transform.right;
             _spawner.Spawn(directionView, transform.position, LayerMaskAttacked, Damage);
         }
         
